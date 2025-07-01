@@ -1,0 +1,11 @@
+---
+translations:
+- file: "app/javascript/localize/:locale.json"
+  patterns:
+  - "*.zod.*"
+
+export_files:
+  enabled: true
+  files:
+    - template: app/views/localize/template.erb
+      output: "%{dir}/%{base_name}.js"

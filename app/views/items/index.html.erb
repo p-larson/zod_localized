@@ -1,0 +1,45 @@
+
+<div class="hstack justify-content-between align-baseline px-2 mb-3">
+  <h2>Items</h2>
+  <%= link_to "New", new_item_path, class: "btn btn-primary col-auto" %>
+</div>
+
+<div class="card" data-controller="amounts">
+  <div class="card-body">
+    <div class="row fw-bold border-bottom py-2">
+      <div class="col-4">Name</div>
+      <div class="col-5">Amount</div>
+      <div class="col-3">Maximum</div>
+    </div>
+
+    <% @items.each_with_index do |item, index| %>
+      <div
+        class="row align-items-start py-2 border-bottom"
+        data-amounts-target="row"
+        data-item-index="<%= index %>"
+      >
+        <div class="col-4 pt-2"><%= item.name %></div>
+
+        <div class="col-5">
+          <input
+            min="0"
+            max="<%= item.maximum_amount %>"
+            name="items[<%= index %>][amount]"
+            value="<%= item.amount %>"
+            class="form-control"
+            data-amounts-target="amount"
+            data-action="blur->amounts#validate change->amounts#validate input->amounts#validate"
+            data-maximum="<%= item.maximum_amount %>"
+            />
+          <div
+            data-amounts-target="error"
+            class="text-danger"
+            style="font-size: 0.8rem;"
+          ></div>
+        </div>
+
+        <div class="col-3 pt-2"><%= item.maximum_amount %></div>
+      </div>
+    <% end %>
+  </div>
+</div>

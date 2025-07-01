@@ -1,0 +1,6 @@
+es:
+  zod:
+    errors:
+      too_small: "La cantidad debe ser mayor o igual a %{minimum}"
+      too_big: "La cantidad debe ser menor o igual a %{maximum}"
+      invalid_type: "Por favor, ingrese un número válido"
